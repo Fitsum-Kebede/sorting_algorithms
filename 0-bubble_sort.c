@@ -1,39 +1,34 @@
 #include "sort.h"
 
 /**
- * bubble_sort - compares adjacent elements and swaps them
- * @array: array
- * @size: size of the array
- * Return: Void
+ * bubble_sort - sort list with bubble
+ * @array: The array to be printed
+ * @size: Number of elements in @array
  */
 void bubble_sort(int *array, size_t size)
 {
-	int swap;
-	size_t i, j;
+	size_t i = 0, j = size;
+	int tmp, sorted;
 
-	if (size < 2)
-	{
+	if (array == NULL)
 		return;
-	}
-
-
-	for (i = 0; i <= size; i++)
+	for (j = size; j > 0; j--)
 	{
-		if (array[i + 1])
+		sorted = 0;
+		for (i = 0; i < size - 1; i++)
 		{
-			for (j = 0; j <= size; j++)
+			if (array[i] > array[i + 1])
 			{
-				if (array[j + 1])
-				{
-					if (array[j] > array[j + 1])
-					{
-						swap = array[j];
-						array[j] = array[j + 1];
-						array[j + 1] = swap;
-						print_array(array, size);
-					}
-				}
+				tmp = array[i];
+				array[i] = array[i + 1];
+				array[i + 1] = tmp;
+				print_array(array, size);
+				sorted = 1;
 			}
+		}
+		if (sorted == 0)
+		{
+			break;
 		}
 	}
 }
